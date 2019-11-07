@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class apiService{
     [x: string]: any;
+    public userdata:any;
     constructor( private http:HttpClient){
 
     }

@@ -1,21 +1,28 @@
-<div>
-    <label>name</label>
-<input type="text" value="{{currentuser.name}}">
-</div>
-<div>
-    <label>username</label>
-<input type="text" value="{{currentuser.username}}">
-</div>
-<div>
-    <label>email</label>
-<input type="email" value="{{currentuser.email}}">
-</div>
-<div>
-    <label>phoneno</label>
-<input type="text" value="{{currentuser.phone}}">
-</div>
-<div>
-    <label>website</label>
-<input type="text" value="{{currentuser.website}}">
-</div>
 
+<div>
+    <label>Name:</label>
+<input type="text" value="{{currentuser.name}}" [(ngModel)]="a" (change)="changedata('name',$event)"/>
+<h3>display name:{{a}}</h3>
+</div>
+<div>
+    <label>User Name:</label>
+<input type="text" value="{{currentuser.username}}" [(ngModel)]="b" (change)="changedata('username',$event)">
+<h3>display username:{{b}}</h3>
+</div>
+<div>
+    <label>Email:</label>
+<input type="text" value="{{currentuser.email}}" [(ngModel)]="c" (change)="changedata('email',$event)">
+<h3>display email:{{c}}</h3>
+</div>
+<div>
+    <label>Phone-No:</label>
+<input type="text" value="{{currentuser.phone}}" [(ngModel)]="d" (change)="changedata('phoneno',$event)">
+<h3>display email:{{d}}</h3>
+</div>
+<div>
+    <label>Website:</label>
+<input type="text" value="{{currentuser.website}}" [(ngModel)]="e" (change)="changedata('website',$event)">
+<h3>display email:{{e}}</h3>
+</div>
+<button (click)="change()">Save</button>
+<button (click)="change()" style="background-color: blueviolet;margin-left:15px;">cancel</button>

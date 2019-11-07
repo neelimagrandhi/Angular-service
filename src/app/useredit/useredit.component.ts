@@ -9,13 +9,17 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 
 export class Usereditcomponent{
+
+    [x: string]: any;
     public currentuser:any;
     public id:any;
+    public name:any;
+    public data:any={"name":null,"username":null,"email":null}
     constructor(private route:ActivatedRoute,private service:apiService){
         this.route.params.subscribe(
             (res)=>{
                 this.id=res.id;
-                this.fetchdata();
+                this.fetchdata()
             }
         )
     }
@@ -26,5 +30,32 @@ export class Usereditcomponent{
                 console.log(this.currentuser)
             }
         )
+    }
+   changedata(key,e){
+        if(key=="name"){
+            this.data.name=e.target.value
+            var a=this.data.name
+        }
+        else if(key=="username"){
+            this.data.username=e.target.value
+            var b=this.data.username
+        }
+        else if(key=="email"){
+            this.data.email=e.target.value
+            var c=this.data.email
+        }
+        else if(key=="phoneno"){
+            this.data.phoneno=e.target.value
+        }
+    }
+    /*changedata1($event){
+        this.name=event.target.value
+    }*/
+
+    change(){
+        console.log(this.data)
+    }
+    modified(){
+        this.name=event.target.value
     }
 }

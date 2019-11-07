@@ -11,8 +11,11 @@ import { apiService } from '../services/api.service';
 })
 export class homeComponent{
     public users:any;
-   
-    id;
+    public value:any;
+   public name:string=null;
+    id: any;
+    user:any;
+    name1="sai"
     constructor(private service:apiService, private router:Router){
         
         this.getUsers();
@@ -20,8 +23,39 @@ export class homeComponent{
     getUsers(){
         this.service.fetchUsers().subscribe(
             res=>{
+                this.service.userdata=res;
                 this.users=res;
             }
         )    
     }
-}
+     gotoEdit(data){
+         this.router.navigate(["useredit",data])
+     }
+    //display only related values wihtout refresh
+   /*search(event){
+        var searchkey=event.target.value;
+        if(searchkey){
+            this.users=this.users.filter((user ) =>{
+                var name=user.name.toLowerCase()
+                return name.indexOf(searchkey)!==-1
+            })
+        }
+}*/
+   search(event){
+    var searchkey=event.target.value;
+    if(searchkey){
+        this.users=this.service.userdata.filter((user,index) =>{
+            var name=user.name.toLowerCase()
+            return name.indexOf(searchkey)!==-1
+            })
+        }
+        else {
+            return this.users
+        }
+    }
+    modified(){
+        this.name=event.target.value
+    }
+   }
+
+
